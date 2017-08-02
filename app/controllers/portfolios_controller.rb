@@ -23,7 +23,7 @@ class PortfoliosController < ApplicationController
 
   def edit
     @portfolio_item = Portfolio.find(params[:id])
-
+    #makes it available to the view at the webpage with edit/id
   end
 
   def update
@@ -38,5 +38,8 @@ class PortfoliosController < ApplicationController
     end
   end
 
+def show
+  @portfolio_item = Portfolio.find(params[:id])
+end
 
 end
