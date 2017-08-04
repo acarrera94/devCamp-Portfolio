@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
-  resources :portfolios
-  get 'pages/home'
+  resources :portfolios, except: [:show]
 
-  get 'pages/about'
+  #create my own show action
+  get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio_show'
 
-  get 'pages/contact'
+  #this is a custom route
+  get 'about-me', to: 'pages#about'
+  get 'contact', to: 'pages#contact'
 
-  resources :blogs
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  #resources is a reserved keyword that usees the keywords in the ApplicationController
-  #such as show, new, edit, etc. to route them to the right places.
+  resources :blogs do
+    member do
+      get :toggle_status
+    end
+  end
+
+  #setting the root to the home page.
+  root to: 'pages#home'
+
 end
