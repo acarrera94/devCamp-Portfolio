@@ -4,6 +4,10 @@ class PortfoliosController < ApplicationController
     #@port... makes it available to the view, it's a variable
   end
 
+  def angular
+    @angular_portfolio_items = Portfolio.angular
+  end
+
   def new #this is the action to create a new item
       @portfolio_item = Portfolio.new #calling from the model
       #makes it available to the view
