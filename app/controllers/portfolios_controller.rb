@@ -4,14 +4,19 @@ class PortfoliosController < ApplicationController
     #@port... makes it available to the view, it's a variable
   end
 
+  def angular
+    @angular_portfolio_items = Portfolio.angular
+  end
+
   def new #this is the action to create a new item
       @portfolio_item = Portfolio.new #calling from the model
+      3.times { @portfolio_item.technologies.build}
       #makes it available to the view
   end
 
   def create
-    @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))# here we tell the form what it's allowed to access
-
+    @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name]))# here we tell the form what it's allowed to access
+    #makes sure that whatever gets passed through belongs to an attribute in the database 
     respond_to do |format|
       if @portfolio_item.save
         format.html { redirect_to portfolios_path, notice: 'portfolio was successfully created.' }
