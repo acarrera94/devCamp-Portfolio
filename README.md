@@ -1,6 +1,7 @@
-# Devcamp Portfolio Application
+# Portfolio Application
 
-> This is a Ruby on Rails 5 application that demonstrates my Portfolio
+> This is a Ruby on Rails 5 application that demonstrates my development portfolio
+> The application is still a work in progress. 
 
 ## Features
 
